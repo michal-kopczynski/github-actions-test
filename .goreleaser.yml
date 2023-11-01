@@ -6,7 +6,7 @@ release:
 builds:
 - id: "app1"
   main: ./cmd/app1/main.go
-  binary: kubectl-curl
+  binary: app1
   goos:
     - linux
     - darwin
