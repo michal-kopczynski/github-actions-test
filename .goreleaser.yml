@@ -1,0 +1,48 @@
+project_name: kubectl-curl
+release:
+  github:
+    owner: michal-kopczynski
+    name: github-actions-test
+builds:
+- id: "app1"
+  main: ./cmd/app1/main.go
+  binary: kubectl-curl
+  goos:
+    - linux
+    - darwin
+    - windows
+  goarch:
+    - amd64
+    - arm64
+- id: "app2"
+  main: ./cmd/app2/main.go
+  binary: app2
+  goos:
+    - linux
+    - darwin
+    - windows
+  goarch:
+    - amd64
+    - arm64
+archives:
+- id: "archive"
+  name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+  builds:
+    - app1
+    - app2
+  format: tar.gz
+  format_overrides:
+    - goos: windows
+      format: zip
+  files:
+    - none*
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^e2e:'
