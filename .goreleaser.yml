@@ -1,4 +1,4 @@
-project_name: kubectl-curl
+project_name: github-actions-test
 release:
   github:
     owner: michal-kopczynski
@@ -35,14 +35,14 @@ archives:
     - goos: windows
       format: zip
   files:
-    - none*
+    - LICENSE
 checksum:
   name_template: 'checksums.txt'
 snapshot:
   name_template: "{{ .Tag }}-next"
-changelog:
-  sort: asc
-  filters:
-    exclude:
-    - '^docs:'
-    - '^e2e:'
+# changelog:
+#   sort: asc
+  # filters:
+  #   exclude:
+  #   - '^docs:'
+  #   - '^e2e:'
